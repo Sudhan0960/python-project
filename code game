@@ -2,19 +2,28 @@ import random
 def main():
         scr()
 def scr():
+#assuming the number of stones present in the begining
     NUMBER=20
+#for the loop to run until it reaches zero
     while True:
+#checks the input whether 1 or 2
         if input == 1 or 2:
             print("There are "+ str(NUMBER)+" stones left")
             player1=int(input("Player 1 would you like to remove "+ str(1 )+" or "+ str(2)+ " stones"+"? "))
+#checks the input given is equal to 1 or 2 until it is 1 or 2
             while player1 < 1 or player1 > 2:
                 player1=int(input("Please enter "+ str(1)+ " or " + str(2) +": "))
+#subract the user entered value from the available value
         NUMBER=NUMBER-player1
+#checks whether the available value is equal to zero or not
         if NUMBER <= 0:
             print()
+#since if player1 entered value is less than zero and declares the winner
             print("Player 2 wins!")
+#break out of the loop
             break
         print()
+#The same thing happens for the player 2
         if input == 1 or 2:
             print("There are "+ str(NUMBER)+" stones left")
             player2=int(input("Player 2 would you like to remove "+ str(1 )+" or "+ str(2)+ " stones"+"? "))
