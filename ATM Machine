@@ -1,0 +1,62 @@
+print('Welcome To Sudhan Bank ATM')
+restart=('Y')
+chances=3
+balance=10000
+while chances >= 0:
+	pin=int(input('Please Enter Your 4 Digits PIN: '))
+	i=960
+	s1=f'{i:04d}'
+	if pin == int(s1):
+		print('You Entered Your PIN correctly')
+		print('Please Press 1 For Your Balance')
+		print('Please Press 2 For Withdraw')
+		print('Please Press 3 To Pay in')
+		print('Please Press 4 To Return Card \n')
+		while restart not in ('n','No','no','N'):
+			print('\nPlease Press 1 For Your Balance')
+			print('Please Press 2 For Withdraw')
+			print('Please Press 3 To Pay in')
+			print('Please Press 4 To Return Card')
+			option=int(input('What is Your Choice?: '))
+			if option == 1:
+				print('Your Balance is ₹',balance)
+				restart=input('Would You like to go back? ')
+				if restart in('n','No','no','N'):
+					print('Thank You For Using Sudhan Bank ATM')
+					break
+			elif option == 2:
+				withdraw=float(input('How Much would You like to withdraw? 100,200,500,2000 for other enter 1: '))
+				if withdraw in [100,200,500,2000]:
+					balance = balance - withdraw
+					print('\n Your Current Balance is now ₹ ',balance)
+					restart=input('Would You like to go back? \n')
+				elif withdraw != [100,200,500,2000]:
+					print('Invalid Amount, Please Re-try\n')
+					withdraw=float(input('How Much would You like to withdraw? 100,200,500,2000 for other enter 1: '))
+					balance = balance - withdraw
+					print('\n Your Current Balance is now ₹ ',balance)
+					restart=input('Would You like to go back? \n')
+				if restart in ('n','No','no','N'):
+					print('Thank You For Using Sudhan Bank ATM ')
+					break
+			elif option == 3:
+				pay=float(input('How much would you like to Pay?'))
+				balance = balance + pay
+				print('Your Balance is ₹ ',balance)
+				restart=input('Would You like to go back? ')
+				if restart in('n','No','no','N'):
+					print('Thank You For Using Sudhan Bank ATM')
+					break
+			elif option == 4:
+				print('Please Wait until Your Card is Returned...\n')
+				print('Thank You For Using Sudhan Bank ATM')
+			else:
+				print('Please Choose a Correct Option \n')
+				restart='y'
+				break
+	elif pin != int(s1):
+		print('Incorrect PIN')
+		chances = chances - 1
+		if chances == 0:
+			print('Out of Maximum Attempts')
+			break
