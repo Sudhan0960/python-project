@@ -1,0 +1,56 @@
+import re
+print("GPA calculation for ECE(Regulation 2013)")
+print("Link for credit score https://studentsfocus.com/syllabus/Anna_University/Regulation_2013/ELECTRONICS_AND_COMMUNICATION_ENGINEERING.pdf")
+
+op=[]
+def cre():
+    for i in range(len(subjects)):
+        # n = int(input("Enter the no.of sub: "))
+        grade = input("\nEnter your grade for "+subjects[i]+": ").upper()
+        if re.match("^[A,B,C,D,E,S,U]*$", grade):
+            print("\nYour score in "+subjects[i]+" is: "+grade)
+        while not re.match("^[A,B,C,D,E,S,U]*$", grade):
+            print("\nError! Only A,B,C,D,E,U,S allowed")
+            grade = input("\nEnter your grade for "+subjects[i]+": ").upper()
+            print("\nYour score in "+subjects[i]+" is: "+grade)
+        while len(grade) > 1:
+            print("\nError! Grade is not double digit")
+            grade = input("\nEnter your grade for "+subjects[i]+": ")
+        credit = int(input("\nEnter the credit score for "+subjects[i]+' : '))
+        while credit > 6:
+            print('Please Enter Valid Credit Score')
+            credit = int(input("\nEnter the subject credit score: "))
+        grade_map = {'S': 10, 'A': 9, 'B': 8, 'C': 7, 'D': 6, 'E': 5, 'U': 0}
+        op.append(grade_map[grade]*credit)
+
+sem = True
+while sem:
+    sem = int(input("\nEnter the sem number:"))
+    if sem == 0 :
+        sem = int(input("Enter the sem number:"))
+    if sem == 1:
+        subjects = ["Techincal English-1", "Mathematics-1", "Engineering Physics-1", "Engineering Chemitry -1", "Computer Programming", "Engineering Graphics","Computer Practices Laboratory", "Engineering Practices Laboratory","Physics Chemistry Laboratory-1"]
+        sum_of_credits = 26
+        cre()
+        t=round(sum(op)/sum_of_credits,2)
+        print('Your GPA FOR Semseter 1 is: ',t)
+    if sem == 2:
+        subjects = ["Technical English-2", "Mathematics-2", "Engineering Physics-2", "Engineering Chemistry-2", "Electronic Devices", "Circuit Theory","Physics and Chemistry Laboratory-2",  "Circuits and Devices Laboratory"]
+        cre()
+        sum_of_credits=24
+        t = round(sum(op)/sum_of_credits, 2)
+        print('\nYour GPA FOR Semseter 2 is: ', t)
+    if sem == 3:
+        subjects = ["Electrical Engineering and Instrumentation", "Transforms and Partial Differential Equations","Object Oriented Programming and Data Structures", "Digital Electronics", "Signals and Systems", "Electronic Circuits-1","Analog and Devices Laboratory","OOPS and Data Structures Laboratory"]
+        cre()
+        sum_of_credits = 26
+        t = round(sum(op)/sum_of_credits, 2)
+        print('\nYour GPA FOR Semseter 3 is: ', t)
+    choice=input('\nDo You Want to Calculate For Other semester? Y/N :')
+    if choice in ('Y','y'):
+        op=[]
+        sem
+    elif choice in ('n','N'):
+        print('\nThankYou For Using GPA Calculator')
+        break
+
