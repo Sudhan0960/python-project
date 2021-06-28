@@ -7,16 +7,19 @@ def cre():
     for i in range(len(subjects)):
         # n = int(input("Enter the no.of sub: "))
         grade = input("\nEnter your grade for "+subjects[i]+": ").upper()
+        while len(grade) > 1:
+            print("\nError! Grade is not double digit")
+            grade = input("\nEnter your grade for "+subjects[i]+": ")
         if re.match("^[A,B,C,D,E,S,U]*$", grade):
             print("\nYour score in "+subjects[i]+" is: "+grade)
         while not re.match("^[A,B,C,D,E,S,U]*$", grade):
             print("\nError! Only A,B,C,D,E,U,S allowed")
             grade = input("\nEnter your grade for "+subjects[i]+": ").upper()
             print("\nYour score in "+subjects[i]+" is: "+grade)
-        while len(grade) > 1:
-            print("\nError! Grade is not double digit")
-            grade = input("\nEnter your grade for "+subjects[i]+": ")
         credit = int(input("\nEnter the credit score for "+subjects[i]+' : '))
+        while credit == 5:
+            print('Please Enter Valid Credit Score')
+            credit = int(input("\nEnter the subject credit score: "))
         while credit > 6:
             print('Please Enter Valid Credit Score')
             credit = int(input("\nEnter the subject credit score: "))
@@ -53,4 +56,6 @@ while sem:
     elif choice in ('n','N'):
         print('\nThankYou For Using GPA Calculator')
         break
+
+
 
