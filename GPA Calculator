@@ -7,6 +7,9 @@ def cre():
     for i in range(len(subjects)):
         # n = int(input("Enter the no.of sub: "))
         grade = input("\nEnter your grade for "+subjects[i]+": ").upper()
+        while re.match("[0-9]",grade):
+            print("\nError! Invalid Grade")
+            grade = input("\nEnter your grade for " + subjects[i] + ": ").upper()
         while len(grade) > 1:
             print("\nError! Invalid Grade")
             grade = input("\nEnter your grade for "+subjects[i]+": ").upper()
